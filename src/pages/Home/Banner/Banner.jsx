@@ -1,9 +1,10 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
+import { Navigation, Pagination } from 'swiper';
 import BannerSlider from '../../../components/BannerSlider/BannerSlider';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import image1 from '../../../assets/images/banner/doctor.jpg';
 import image2 from '../../../assets/images/banner/eat.jpg';
 import image3 from '../../../assets/images/banner/medicine.png';
@@ -11,7 +12,16 @@ import image3 from '../../../assets/images/banner/medicine.png';
 const Banner = () => {
 	return (
 		<div className='mx-auto max-w-screen-xl'>
-			<Swiper navigation={true} modules={[Navigation]} className='mySwiper'>
+			<Swiper
+				slidesPerView={1}
+				spaceBetween={30}
+				loop={true}
+				pagination={{
+					clickable: true,
+				}}
+				navigation={true}
+				modules={[Pagination, Navigation]}
+				className='mySwiper'>
 				<SwiperSlide>
 					<BannerSlider title='Your Health Our Concern' image={image1} />
 				</SwiperSlide>
