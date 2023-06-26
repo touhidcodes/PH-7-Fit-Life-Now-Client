@@ -13,13 +13,13 @@ const Banner = () => {
 		<div className='mx-auto max-w-screen-xl'>
 			<Swiper navigation={true} modules={[Navigation]} className='mySwiper'>
 				<SwiperSlide>
-					<BannerSlider title='Hi there' image={image1} />
+					<BannerSlider title='Your Health Our Concern' image={image1} />
 				</SwiperSlide>
 				<SwiperSlide>
-					<BannerSlider title='Hi there' image={image2} />
+					<BannerSlider title='Improve Yourself Daily' image={image2} />
 				</SwiperSlide>
 				<SwiperSlide>
-					<BannerSlider title='Hi there' image={image3} />
+					<BannerSlider title='We Value Your Health' image={image3} />
 				</SwiperSlide>
 			</Swiper>
 		</div>
