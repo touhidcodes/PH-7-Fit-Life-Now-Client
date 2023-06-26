@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import AxiosBase from '../../../hooks/AxiosBase/AxiosBase';
-import BestProductCard from '../../../components/BestProductCard/BestProductCard';
+import ProductsCard from '../../../components/ProductsCard/ProductsCard';
 
 const BestProducts = () => {
 	const [data, setData] = useState([]);
-	AxiosBase.get('product/best').then((data) => setData(data.data));
+	AxiosBase.get('products/best').then((data) => setData(data.data));
 	return (
 		<div className='bg-base-200 lg:mt-10'>
 			<div className='mx-auto max-w-screen-xl'>
@@ -14,13 +14,7 @@ const BestProducts = () => {
 				</p>
 				<div className='grid grid-cols-1 lg:grid-cols-3 gap-10 p-5  lg:p-10'>
 					{data.map((item) => (
-						<BestProductCard
-							key={item._id}
-							id={item._id}
-							image={item.image}
-							name={item.name}
-							title={item.title}
-						/>
+						<ProductsCard key={item._id} item={item} />
 					))}
 				</div>
 			</div>
