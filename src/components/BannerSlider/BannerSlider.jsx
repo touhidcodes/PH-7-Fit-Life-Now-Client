@@ -3,7 +3,7 @@ import React from 'react';
 const BannerSlider = ({ title, image }) => {
 	return (
 		<div>
-			<div className='grid grid-cols-2 gap-10 px-20 py-10 items-center'>
+			<div className='grid grid-cols-1 lg:grid-cols-2 gap-10 px-20 py-10 items-center grid-col-reverse'>
 				<div className='space-y-5 ml-5'>
 					<h4 className='text-6xl font-semibold text-red-400'>{title}</h4>
 					<p className='font-semibold'>
