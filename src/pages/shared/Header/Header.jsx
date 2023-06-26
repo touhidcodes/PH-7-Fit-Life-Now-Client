@@ -1,14 +1,15 @@
 import React from 'react';
 import logo from '../../../assets/images/logo.png';
+import ActiveRoutes from '../../../routes/ActiveRoutes/ActiveRoutes';
 
 const Header = () => {
 	const navOptions = (
 		<>
 			<li>
-				<a>Home</a>
+				<ActiveRoutes to='/'>Home</ActiveRoutes>
 			</li>
 			<li>
-				<a>Parent</a>
+				<ActiveRoutes to='/shop'>Shop</ActiveRoutes>
 			</li>
 			<li>
 				<a>Item 3</a>
