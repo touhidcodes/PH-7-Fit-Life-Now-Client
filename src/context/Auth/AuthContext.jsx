@@ -10,6 +10,7 @@ import {
 	signOut,
 	updateProfile,
 } from 'firebase/auth';
+import AxiosBase from '../../hooks/AxiosBase/AxiosBase';
 
 export const AuthProvider = createContext(null);
 const googleProvider = new GoogleAuthProvider();
@@ -46,13 +47,13 @@ const AuthContext = ({ children }) => {
 			setUser(currentUser);
 			setLoading(false);
 			// Set JWT to Backend
-			// if (currentUser) {
-			// 	axiosBase.post('/jwt', { email: currentUser.email }).then((data) => {
-			// 		localStorage.setItem('access_token', data.data.token);
-			// 	});
-			// } else {
-			// 	localStorage.removeItem('access_token');
-			// }
+			if (currentUser) {
+				AxiosBase.post('/jwt', { email: currentUser.email }).then((data) => {
+					localStorage.setItem('access_token', data.data.token);
+				});
+			} else {
+				localStorage.removeItem('access_token');
+			}
 		});
 		return () => {
 			unsubscribe();
