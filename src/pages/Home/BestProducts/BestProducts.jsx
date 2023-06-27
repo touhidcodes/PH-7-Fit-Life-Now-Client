@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import AxiosBase from '../../../hooks/AxiosBase/AxiosBase';
 import ProductsCard from '../../../components/ProductsCard/ProductsCard';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 const BestProducts = () => {
 	const [data, setData] = useState([]);
@@ -12,10 +16,37 @@ const BestProducts = () => {
 				<p className='text-red-400 ml-5 text-xl mt-3'>
 					____See All Supplements
 				</p>
-				<div className='grid grid-cols-1 lg:grid-cols-3 gap-10 p-5  lg:p-10'>
-					{data.map((item) => (
-						<ProductsCard key={item._id} item={item} />
-					))}
+				<div className='p-10'>
+					<Swiper
+						slidesPerView={1}
+						spaceBetween={30}
+						pagination={{
+							clickable: true,
+						}}
+						breakpoints={{
+							640: {
+								width: 640,
+								slidesPerView: 1,
+							},
+							768: {
+								width: 768,
+								slidesPerView: 2,
+							},
+							1200: {
+								width: 1200,
+								slidesPerView: 3,
+							},
+						}}
+						modules={[Pagination]}
+						className='mySwiper'>
+						<div>
+							{data.map((item, index) => (
+								<SwiperSlide>
+									<ProductsCard key={index} item={item} />
+								</SwiperSlide>
+							))}
+						</div>
+					</Swiper>
 				</div>
 			</div>
 		</div>

@@ -6,7 +6,7 @@ const Shop = () => {
 	const [data, setData] = useState([]);
 	AxiosBase.get('products').then((data) => setData(data.data));
 	return (
-		<div className='bg-base-200 lg:mt-10'>
+		<div className='bg-base-200'>
 			<div className='mx-auto max-w-screen-xl'>
 				<h4 className='text-4xl pt-10 ml-5'>Our All Products:</h4>
 				<p className='text-red-400 ml-5 text-xl mt-3'>
