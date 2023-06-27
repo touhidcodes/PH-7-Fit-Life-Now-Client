@@ -16,7 +16,7 @@ const BestProducts = () => {
 				<p className='text-red-400 ml-5 text-xl mt-3'>
 					____See All Supplements
 				</p>
-				<div className='p-10'>
+				<div className=' p-5 lg:p-10'>
 					<Swiper
 						slidesPerView={1}
 						spaceBetween={30}
