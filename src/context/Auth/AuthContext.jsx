@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import app from '../../firebase/firebase.config';
 import {
 	GoogleAuthProvider,
@@ -11,9 +11,10 @@ import {
 	updateProfile,
 } from 'firebase/auth';
 
-export const AuthProvider = useContext(null);
+export const AuthProvider = createContext(null);
 const googleProvider = new GoogleAuthProvider();
 const auth = getAuth(app);
+
 const AuthContext = ({ children }) => {
 	const [user, setUser] = useState([]);
 	const [loading, setLoading] = useState(true);

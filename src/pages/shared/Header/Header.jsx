@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../../../assets/images/logo.png';
 import ActiveRoutes from '../../../routes/ActiveRoutes/ActiveRoutes';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
 	const navOptions = (
@@ -58,7 +59,9 @@ const Header = () => {
 					<ul className='menu menu-horizontal px-1 text-xl'>{navOptions}</ul>
 				</div>
 				<div className='navbar-end'>
-					<a className='btn btn-error text-white mr-3'>Login</a>
+					<Link to='/login'>
+						<a className='btn btn-error text-white mr-3'>Login</a>
+					</Link>
 				</div>
 			</div>
 		</div>
