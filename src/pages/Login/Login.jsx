@@ -56,7 +56,6 @@ const Login = () => {
 	const handleGoogleSignIn = () => {
 		googleSignIn().then((result) => {
 			const loggedInUser = result.user;
-			// console.log(loggedInUser);
 			axiosBase
 				.post('users', {
 					name: loggedInUser.displayName,

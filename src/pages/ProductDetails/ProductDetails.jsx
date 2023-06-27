@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import AxiosBase from '../../hooks/AxiosBase/AxiosBase';
 import { useParams } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
+import { AuthProvider } from '../../context/Auth/AuthContext';
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
+import Swal from 'sweetalert2';
 
 const ProductDetails = () => {
+	const { user } = useContext(AuthProvider);
 	const [loading, setLoading] = useState(true);
 	const [product, setProduct] = useState([]);
 	const params = useParams();
@@ -19,6 +22,36 @@ const ProductDetails = () => {
 
 	const { _id, image, name, title, ratings, indications, price, type, dose } =
 		product;
+
+	const handleAddToCart = () => {
+		if (user) {
+			AxiosBase.post('/carts', {
+				product_id: _id,
+				email: user?.email,
+				image,
+				name,
+				title,
+				ratings,
+				indications,
+				price,
+				type,
+				dose,
+			}).then((data) => {
+				// console.log(data);
+				if (data.data.insertedId) {
+					Swal.fire({
+						position: 'top-end',
+						icon: 'success',
+						title: 'Your class has been added',
+						showConfirmButton: false,
+						timer: 1500,
+					});
+				} else if (data.data.message) {
+					Swal.fire('Your Class already added!');
+				}
+			});
+		}
+	};
 	return (
 		<div className='mx-auto max-w-screen-xl'>
 			{loading && <Loading loading={loading} />}
@@ -34,8 +67,8 @@ const ProductDetails = () => {
 					</p>
 					<p className='text-4xl text-red-400'>$ {price}</p>
 					<p className='font-semibold text-zinc-500'>
-						{indications?.map((item) => (
-							<li>{item}</li>
+						{indications?.map((item, index) => (
+							<li key={index}>{item}</li>
 						))}
 					</p>
 					<p>
@@ -47,7 +80,9 @@ const ProductDetails = () => {
 						<span className='text-purple-900'>{dose}</span>
 					</p>
 					<div className='card-actions justify-start'>
-						<button className='btn rounded-full px-8 bg-blue-950 text-white'>
+						<button
+							className='btn rounded-full px-8 bg-blue-950 text-white'
+							onClick={handleAddToCart}>
 							Add To Cart
 						</button>
 					</div>
