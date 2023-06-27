@@ -4,10 +4,12 @@ import ActiveRoutes from '../../../routes/ActiveRoutes/ActiveRoutes';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthProvider } from '../../../context/Auth/AuthContext';
 import { FaShoppingCart } from 'react-icons/fa';
+import useCart from '../../../hooks/useCart/useCart';
 
 const Header = () => {
 	const { user, logOut } = useContext(AuthProvider);
 	const navigate = useNavigate();
+	const [cart] = useCart();
 
 	const handleLogOut = () => {
 		logOut()
@@ -75,7 +77,7 @@ const Header = () => {
 							<div className='flex items-center justify-center'>
 								<h4 className='lg:mr-5 mr-1 flex items-center'>
 									<FaShoppingCart className='w-5 h-5 lg:mr-2 mr-1' />
-									<div className='badge badge-secondary'>+0</div>
+									<div className='badge badge-secondary'>+{cart?.length}</div>
 								</h4>
 								<div className='avatar placeholder flex justify-center'>
 									<div className='bg-neutral-focus text-neutral-content rounded-full w-12'>

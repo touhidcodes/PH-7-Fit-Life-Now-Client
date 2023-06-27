@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AxiosBase from '../../../hooks/AxiosBase/AxiosBase';
 import ProductsCard from '../../../components/ProductsCard/ProductsCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -8,7 +8,10 @@ import 'swiper/css/pagination';
 
 const BestProducts = () => {
 	const [data, setData] = useState([]);
-	AxiosBase.get('products/best').then((data) => setData(data.data));
+
+	useEffect(() => {
+		AxiosBase.get('products/best').then((data) => setData(data.data));
+	}, []);
 	return (
 		<div className='bg-base-200 lg:mt-10'>
 			<div className='mx-auto max-w-screen-xl'>
