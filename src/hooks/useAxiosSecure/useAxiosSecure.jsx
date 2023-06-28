@@ -5,7 +5,7 @@ import { AuthProvider } from '../../context/Auth/AuthContext';
 import axios from 'axios';
 
 const axiosSecure = axios.create({
-	baseURL: 'http://localhost:5000/',
+	baseURL: 'http://localhost:5000',
 });
 
 const useAxiosSecure = () => {
@@ -22,7 +22,10 @@ const useAxiosSecure = () => {
 		});
 
 		axiosSecure.interceptors.response.use(
-			(response) => response,
+			(response) => {
+				// console.log(response);
+				return response;
+			},
 			async (error) => {
 				console.log(error);
 				if (

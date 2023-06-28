@@ -8,43 +8,12 @@ const Shop = () => {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		AxiosBase.get('products').then((data) => {
+		AxiosBase.get('/products').then((data) => {
 			setData(data.data);
 			setLoading(false);
 		});
 	}, []);
 
-	// const handleAddToCart = () => {
-	// 	if (user) {
-	// 		axiosBase
-	// 			.post('/carts', {
-	// 				booked_id: _id,
-	// 				email: user?.email,
-	// 				class_name,
-	// 				image,
-	// 				instructor_name,
-	// 				enrolled,
-	// 				total_seats,
-	// 				available_seats,
-	// 				price,
-	// 			})
-	// 			.then((data) => {
-	// 				console.log(data);
-
-	// 				if (data.data.insertedId) {
-	// 					Swal.fire({
-	// 						position: 'top-end',
-	// 						icon: 'success',
-	// 						title: 'Your class has been added',
-	// 						showConfirmButton: false,
-	// 						timer: 1500,
-	// 					});
-	// 				} else if (data.data.message) {
-	// 					Swal.fire('Your Class already added!');
-	// 				}
-	// 			});
-	// 	}
-	// };
 	return (
 		<div className='bg-base-200'>
 			{loading && <Loading loading={loading} />}

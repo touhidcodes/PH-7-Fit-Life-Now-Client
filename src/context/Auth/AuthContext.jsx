@@ -43,13 +43,14 @@ const AuthContext = ({ children }) => {
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-			// console.log("auth state changed", currentUser)
+			// console.log('auth state changed', currentUser);
 			setUser(currentUser);
 			setLoading(false);
 			// Set JWT to Backend
 			if (currentUser) {
 				AxiosBase.post('/jwt', { email: currentUser.email }).then((data) => {
 					localStorage.setItem('access_token', data.data.token);
+					// console.log(data.data.token);
 				});
 			} else {
 				localStorage.removeItem('access_token');

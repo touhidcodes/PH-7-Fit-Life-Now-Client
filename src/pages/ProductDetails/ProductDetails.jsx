@@ -3,6 +3,7 @@ import AxiosBase from '../../hooks/AxiosBase/AxiosBase';
 import { useParams } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import { AuthProvider } from '../../context/Auth/AuthContext';
+import useCart from '../../hooks/useCart/useCart';
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
 import Swal from 'sweetalert2';
@@ -11,7 +12,10 @@ const ProductDetails = () => {
 	const { user } = useContext(AuthProvider);
 	const [loading, setLoading] = useState(true);
 	const [product, setProduct] = useState([]);
+	const [, refetch] = useCart();
 	const params = useParams();
+
+	// TODO: Refetch cart number on header not working
 
 	useEffect(() => {
 		AxiosBase.get(`products/${params.id}`).then((data) => {
@@ -42,12 +46,13 @@ const ProductDetails = () => {
 					Swal.fire({
 						position: 'top-end',
 						icon: 'success',
-						title: 'Your class has been added',
+						title: 'Your supplement has been added',
 						showConfirmButton: false,
 						timer: 1500,
 					});
 				} else if (data.data.message) {
-					Swal.fire('Your Class already added!');
+					refetch();
+					Swal.fire('Your Supplement already added!');
 				}
 			});
 		}

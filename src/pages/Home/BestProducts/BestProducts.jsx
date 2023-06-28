@@ -10,7 +10,7 @@ const BestProducts = () => {
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
-		AxiosBase.get('products/best').then((data) => setData(data.data));
+		AxiosBase.get('/products/best').then((data) => setData(data.data));
 	}, []);
 	return (
 		<div className='bg-base-200 lg:mt-10'>
@@ -44,8 +44,8 @@ const BestProducts = () => {
 						className='mySwiper'>
 						<div>
 							{data.map((item, index) => (
-								<SwiperSlide>
-									<ProductsCard key={index} item={item} />
+								<SwiperSlide key={index}>
+									<ProductsCard item={item} />
 								</SwiperSlide>
 							))}
 						</div>
