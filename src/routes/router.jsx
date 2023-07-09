@@ -10,6 +10,7 @@ import Dashboard from '../layouts/Dashboard/Dashboard';
 import AllUsers from '../pages/Dashboard/AllUsers/AllUsers';
 import AllOrders from '../pages/Dashboard/AllOrders/AllOrders';
 import PendingOrders from '../pages/Dashboard/PendingOrders/PendingOrders';
+import AddProducts from '../pages/Dashboard/AddProducts/AddProducts';
 
 const router = createBrowserRouter([
 	{
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
 			{
 				path: 'pendingOrders',
 				element: <PendingOrders />,
+			},
+			{
+				path: 'addProducts',
+				element: <AddProducts />,
 			},
 		],
 	},
