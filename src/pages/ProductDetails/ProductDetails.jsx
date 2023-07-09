@@ -28,7 +28,7 @@ const ProductDetails = () => {
 
 	const { _id, image, name, title, ratings, indications, price, type, dose } =
 		product;
-	console.log(user.displayName);
+	// console.log(user.displayName);
 	const handleAddToCart = () => {
 		if (user) {
 			AxiosBase.post('/carts', {

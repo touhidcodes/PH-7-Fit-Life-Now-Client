@@ -4,6 +4,7 @@ import { AuthProvider } from '../../context/Auth/AuthContext';
 import useAdmin from '../../hooks/useAdmin/useAdmin';
 import Header from '../../pages/shared/Header/Header';
 import Footer from '../../pages/shared/Footer/Footer';
+import ActiveRoutes from '../../routes/ActiveRoutes/ActiveRoutes';
 
 const Dashboard = () => {
 	const { user } = useContext(AuthProvider);
@@ -19,16 +20,22 @@ const Dashboard = () => {
 			{isAdmin && (
 				<>
 					<li>
-						<Link to='/dashboard/allUsers'>All Users</Link>
+						<ActiveRoutes to='/dashboard/allUsers'>All Users</ActiveRoutes>
 					</li>
 					<li>
-						<Link to='/dashboard/allOrders'>View All Orders</Link>
+						<ActiveRoutes to='/dashboard/allOrders'>
+							View All Orders
+						</ActiveRoutes>
 					</li>
 					<li>
-						<Link to='/dashboard/pendingOrders'>Pending Orders</Link>
+						<ActiveRoutes to='/dashboard/pendingOrders'>
+							Pending Orders
+						</ActiveRoutes>
 					</li>
 					<li>
-						<Link to='/dashboard/addProducts'>Add Products</Link>
+						<ActiveRoutes to='/dashboard/addProducts'>
+							Add Products
+						</ActiveRoutes>
 					</li>
 				</>
 			)}

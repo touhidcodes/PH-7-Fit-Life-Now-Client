@@ -256,7 +256,7 @@ const AddProducts = () => {
 							</div>
 							<input
 								type='submit'
-								value='Add Class'
+								value='Add Product'
 								className='form-control mt-4 btn btn-error text-white w-full'
 							/>
 						</form>

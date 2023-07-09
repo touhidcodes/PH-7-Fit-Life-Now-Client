@@ -11,6 +11,7 @@ import AllUsers from '../pages/Dashboard/AllUsers/AllUsers';
 import AllOrders from '../pages/Dashboard/AllOrders/AllOrders';
 import PendingOrders from '../pages/Dashboard/PendingOrders/PendingOrders';
 import AddProducts from '../pages/Dashboard/AddProducts/AddProducts';
+import Welcome from '../pages/Dashboard/Welcome/Welcome';
 
 const router = createBrowserRouter([
 	{
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
 			</PrivateRoutes>
 		),
 		children: [
+			{
+				path: 'welcome',
+				element: <Welcome />,
+			},
 			{
 				path: 'allUsers',
 				element: <AllUsers />,

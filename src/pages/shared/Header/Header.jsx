@@ -28,7 +28,7 @@ const Header = () => {
 				<ActiveRoutes to='/shop'>Shop</ActiveRoutes>
 			</li>
 			<li>
-				<ActiveRoutes to='/dashboard'>Dashboard</ActiveRoutes>
+				<ActiveRoutes to='/dashboard/welcome'>Dashboard</ActiveRoutes>
 			</li>
 		</>
 	);
