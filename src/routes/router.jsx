@@ -7,6 +7,7 @@ import Login from '../pages/login/Login';
 import Registration from '../pages/Registration/Registration';
 import PrivateRoutes from './Private/PrivateRoutes';
 import Dashboard from '../layouts/Dashboard/Dashboard';
+import AllUsers from '../pages/Dashboard/AllUsers/AllUsers';
 
 const router = createBrowserRouter([
 	{
@@ -44,8 +45,8 @@ const router = createBrowserRouter([
 		),
 		children: [
 			{
-				path: 'welcome',
-				element: <div>Welcome</div>,
+				path: 'allUsers',
+				element: <AllUsers />,
 			},
 		],
 	},
