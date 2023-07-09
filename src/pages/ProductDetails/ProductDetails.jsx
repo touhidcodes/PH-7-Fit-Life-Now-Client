@@ -28,11 +28,12 @@ const ProductDetails = () => {
 
 	const { _id, image, name, title, ratings, indications, price, type, dose } =
 		product;
-
+	console.log(user.displayName);
 	const handleAddToCart = () => {
 		if (user) {
 			AxiosBase.post('/carts', {
 				product_id: _id,
+				user_name: user?.displayName,
 				email: user?.email,
 				image,
 				name,
@@ -42,7 +43,7 @@ const ProductDetails = () => {
 				price,
 				type,
 				dose,
-				status: 'pending',
+				status: 'Pending',
 			}).then((data) => {
 				// console.log(data);
 				if (data.data.insertedId) {

@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import { MdAdminPanelSettings } from 'react-icons/md';
 import useAxiosSecure from '../../../hooks/useAxiosSecure/useAxiosSecure';
 import useAdmin from '../../../hooks/useAdmin/useAdmin';
+import { AuthProvider } from '../../../context/Auth/AuthContext';
 
 const AllUsers = () => {
 	const [axiosSecure] = useAxiosSecure();
 	const [isAdmin] = useAdmin();
+	const { user } = useContext(AuthProvider);
 
 	const { data: users = [], refetch } = useQuery(['users'], async () => {
-		const res = await axiosSecure.get('/users');
-		console.log(axiosSecure);
+		const res = await axiosSecure.get(`/users?email=${user?.email}`);
+		// console.log(axiosSecure);
 		return res.data;
 	});
 
@@ -43,12 +45,12 @@ const AllUsers = () => {
 	return (
 		<div className='my-10'>
 			<div className='text-xl my-5 font-semibold'>
-				<h4 className='text-purple-900'>Total Users: {users.length}</h4>
+				<h4 className='text-blue-950'>Total Users: {users.length}</h4>
 			</div>
 			<div className='overflow-x-auto'>
 				<table className='table'>
 					{/* head */}
-					<thead className='bg-purple-900 rounded-xl text-xl text-white font-semibold'>
+					<thead className='bg-blue-950 rounded-xl text-xl text-white font-semibold'>
 						<tr>
 							<th>#</th>
 							<th>User Name</th>

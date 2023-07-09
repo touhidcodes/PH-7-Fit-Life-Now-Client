@@ -8,6 +8,7 @@ import Registration from '../pages/Registration/Registration';
 import PrivateRoutes from './Private/PrivateRoutes';
 import Dashboard from '../layouts/Dashboard/Dashboard';
 import AllUsers from '../pages/Dashboard/AllUsers/AllUsers';
+import AllOrders from '../pages/Dashboard/AllOrders/AllOrders';
 
 const router = createBrowserRouter([
 	{
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
 			{
 				path: 'allUsers',
 				element: <AllUsers />,
+			},
+			{
+				path: 'allOrders',
+				element: <AllOrders />,
 			},
 		],
 	},
