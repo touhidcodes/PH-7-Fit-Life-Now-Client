@@ -7,11 +7,13 @@ import useCart from '../../hooks/useCart/useCart';
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
 import Swal from 'sweetalert2';
+import useAdmin from '../../hooks/useAdmin/useAdmin';
 
 const ProductDetails = () => {
 	const { user } = useContext(AuthProvider);
 	const [loading, setLoading] = useState(true);
 	const [product, setProduct] = useState([]);
+	const [isAdmin] = useAdmin();
 	const [, refetch] = useCart();
 	const params = useParams();
 
@@ -40,6 +42,7 @@ const ProductDetails = () => {
 				price,
 				type,
 				dose,
+				status: 'pending',
 			}).then((data) => {
 				// console.log(data);
 				if (data.data.insertedId) {
@@ -87,7 +90,8 @@ const ProductDetails = () => {
 					<div className='card-actions justify-start'>
 						<button
 							className='btn rounded-full px-8 bg-blue-950 text-white'
-							onClick={handleAddToCart}>
+							onClick={handleAddToCart}
+							disabled={isAdmin}>
 							Add To Cart
 						</button>
 					</div>

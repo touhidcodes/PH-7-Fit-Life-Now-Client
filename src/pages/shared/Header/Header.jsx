@@ -5,11 +5,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthProvider } from '../../../context/Auth/AuthContext';
 import { FaShoppingCart } from 'react-icons/fa';
 import useCart from '../../../hooks/useCart/useCart';
+import useAdmin from '../../../hooks/useAdmin/useAdmin';
 
 const Header = () => {
 	const { user, logOut } = useContext(AuthProvider);
 	const navigate = useNavigate();
 	const [cart] = useCart();
+	const [isAdmin] = useAdmin();
 
 	const handleLogOut = () => {
 		logOut()
@@ -26,7 +28,7 @@ const Header = () => {
 				<ActiveRoutes to='/shop'>Shop</ActiveRoutes>
 			</li>
 			<li>
-				<a>Item 3</a>
+				<ActiveRoutes to='/dashboard'>Dashboard</ActiveRoutes>
 			</li>
 		</>
 	);
@@ -75,10 +77,18 @@ const Header = () => {
 					<div className='dropdown dropdown-end lg:mr-5 mr-1'>
 						{user ? (
 							<div className='flex items-center justify-center'>
-								<h4 className='lg:mr-5 mr-1 flex items-center'>
-									<FaShoppingCart className='w-5 h-5 lg:mr-2 mr-1' />
-									<div className='badge badge-secondary'>+{cart?.length}</div>
-								</h4>
+								{isAdmin ? (
+									<div></div>
+								) : (
+									<div>
+										<h4 className='lg:mr-5 mr-1 flex items-center'>
+											<FaShoppingCart className='w-5 h-5 lg:mr-2 mr-1' />
+											<div className='badge badge-secondary'>
+												+{cart?.length}
+											</div>
+										</h4>
+									</div>
+								)}
 								<div className='avatar placeholder flex justify-center'>
 									<div className='bg-neutral-focus text-neutral-content rounded-full w-12'>
 										<img src={user?.photoURL} title={user?.displayName} />

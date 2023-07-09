@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link, Outlet } from 'react-router-dom';
+import { AuthProvider } from '../../context/Auth/AuthContext';
+import useAdmin from '../../hooks/useAdmin/useAdmin';
+import Header from '../../pages/shared/Header/Header';
+import Footer from '../../pages/shared/Footer/Footer';
 
 const Dashboard = () => {
+	const { user } = useContext(AuthProvider);
+	const [isAdmin] = useAdmin();
 	const dashboardOptions = (
 		<div className='text-xl font-semibold text-white px-5 hover:text-red'>
 			<Link>
@@ -12,10 +19,16 @@ const Dashboard = () => {
 			{isAdmin && (
 				<>
 					<li>
-						<Link to='/dashboard/allUsers'>Manage Users</Link>
+						<Link to='/dashboard/allUsers'>All Users</Link>
 					</li>
 					<li>
-						<Link to='/dashboard/addClassAdmin'>ManageClass</Link>
+						<Link to='/dashboard/allUsers'>View All Orders</Link>
+					</li>
+					<li>
+						<Link to='/dashboard/addClassAdmin'>Pending Orders</Link>
+					</li>
+					<li>
+						<Link to='/dashboard/addClassAdmin'>Add Products</Link>
 					</li>
 				</>
 			)}
@@ -23,7 +36,7 @@ const Dashboard = () => {
 			{!isAdmin && (
 				<>
 					<li>
-						<Link to='/dashboard/myCart'>My Selected Classes</Link>
+						<Link to='/dashboard/myCart'>My Orders</Link>
 					</li>
 					<li>
 						<Link to='/dashboard/myCart'>My Enrolled Classes</Link>
@@ -51,7 +64,7 @@ const Dashboard = () => {
 				</div>
 				<div className='drawer-side'>
 					<label htmlFor='my-drawer-2' className='drawer-overlay'></label>
-					<ul className='menu p-4 w-80 h-full bg-purple-900 text-base-content rounded-xl'>
+					<ul className='menu p-4 w-80 h-full  bg-blue-950 text-base-content'>
 						{/* Sidebar content here */}
 						{dashboardOptions}
 					</ul>
