@@ -5,6 +5,8 @@ import Shop from '../pages/Shop/Shop';
 import ProductDetails from '../pages/ProductDetails/ProductDetails';
 import Login from '../pages/login/Login';
 import Registration from '../pages/Registration/Registration';
+import PrivateRoutes from './Private/PrivateRoutes';
+import Dashboard from '../layouts/Dashboard/Dashboard';
 
 const router = createBrowserRouter([
 	{
@@ -30,6 +32,20 @@ const router = createBrowserRouter([
 			{
 				path: 'register',
 				element: <Registration />,
+			},
+		],
+	},
+	{
+		path: 'dashboard',
+		element: (
+			<PrivateRoutes>
+				<Dashboard />
+			</PrivateRoutes>
+		),
+		children: [
+			{
+				path: 'welcome',
+				element: <div>Welcome</div>,
 			},
 		],
 	},
