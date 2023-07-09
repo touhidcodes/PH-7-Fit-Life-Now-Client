@@ -1,6 +1,8 @@
 import React from 'react';
 import useCart from '../../../hooks/useCart/useCart';
 import { Link } from 'react-router-dom';
+import { AiOutlineDelete } from 'react-icons/ai';
+import Swal from 'sweetalert2';
 
 const MyCart = () => {
 	const [cart, refetch] = useCart();

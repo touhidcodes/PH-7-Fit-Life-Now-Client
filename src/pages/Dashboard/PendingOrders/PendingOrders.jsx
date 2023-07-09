@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { AuthProvider } from '../../../context/Auth/AuthContext';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/useAxiosSecure/useAxiosSecure';
+import { CiDeliveryTruck } from 'react-icons/ci';
 import Swal from 'sweetalert2';
-import { AiOutlineDelete } from 'react-icons/ai';
 
-const AllOrders = () => {
+const PendingOrders = () => {
 	const [axiosSecure] = useAxiosSecure();
 	const { user } = useContext(AuthProvider);
 
@@ -16,6 +16,31 @@ const AllOrders = () => {
 		return res.data;
 	});
 
+	const handleDelivered = (item) => {
+		console.log(item._id);
+		Swal.fire({
+			title: 'Are you sure?',
+			text: "You won't be able to revert this!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, deliver it!',
+		}).then((result) => {
+			if (result.isConfirmed) {
+				fetch(`http://localhost:5000/delivered/${item._id}`, {
+					method: 'PATCH',
+				})
+					.then((res) => res.json())
+					.then((data) => {
+						if (data.modifiedCount > 0) {
+							refetch();
+							Swal.fire('Updated!', 'Your file has been delivered.', 'success');
+						}
+					});
+			}
+		});
+	};
 	return (
 		<div className='my-10'>
 			<div className='text-xl my-5 font-semibold'>
@@ -38,6 +63,7 @@ const AllOrders = () => {
 							<th>Customer</th>
 							<th>Price</th>
 							<th>Status</th>
+							<th>Deliver</th>
 						</tr>
 					</thead>
 					<tbody className='text-xl font-semibold'>
@@ -68,6 +94,14 @@ const AllOrders = () => {
 								</td>
 								<td>$ {row?.price}</td>
 								<td> {row?.status}</td>
+								<td>
+									<button
+										className='btn btn-error'
+										onClick={() => handleDelivered(row)}
+										disabled={row?.status === 'Delivered'}>
+										<CiDeliveryTruck className='h-8 w-6 text-white' />
+									</button>
+								</td>
 							</tr>
 						))}
 					</tbody>
@@ -77,4 +111,4 @@ const AllOrders = () => {
 	);
 };
 
-export default AllOrders;
+export default PendingOrders;

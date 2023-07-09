@@ -9,6 +9,7 @@ import PrivateRoutes from './Private/PrivateRoutes';
 import Dashboard from '../layouts/Dashboard/Dashboard';
 import AllUsers from '../pages/Dashboard/AllUsers/AllUsers';
 import AllOrders from '../pages/Dashboard/AllOrders/AllOrders';
+import PendingOrders from '../pages/Dashboard/PendingOrders/PendingOrders';
 
 const router = createBrowserRouter([
 	{
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
 			{
 				path: 'allOrders',
 				element: <AllOrders />,
+			},
+			{
+				path: 'pendingOrders',
+				element: <PendingOrders />,
 			},
 		],
 	},
