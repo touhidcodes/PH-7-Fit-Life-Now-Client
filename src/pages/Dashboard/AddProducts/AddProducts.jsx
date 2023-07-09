@@ -80,8 +80,8 @@ const AddProducts = () => {
 	return (
 		<div className='mt-10 mb-5 '>
 			<div className='text-center'>
-				<h1 className='text-3xl font-semibold'>Add Your Class</h1>
-				<p className='text-blue-950 font-semibold mt-1'>Add Class</p>
+				<h1 className='text-3xl font-semibold'>Add Products</h1>
+				<p className='text-blue-950 font-semibold mt-1'>Add Product</p>
 			</div>
 			<div className='lg:w-[600px] mx-auto mt-5'>
 				<div className=' card  p-10 rounded-xl shadow-2xl bg-base-100'>

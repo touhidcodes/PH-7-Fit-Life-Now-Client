@@ -43,13 +43,11 @@ const Dashboard = () => {
 			{!isAdmin && (
 				<>
 					<li>
-						<Link to='/dashboard/myCart'>My Orders</Link>
+						<ActiveRoutes to='/dashboard/myCart'>My Orders</ActiveRoutes>
 					</li>
+
 					<li>
-						<Link to='/dashboard/myCart'>My Enrolled Classes</Link>
-					</li>
-					<li>
-						<Link to='/dashboard/payment'>Payment</Link>
+						<ActiveRoutes to='/dashboard/payment'>Payment</ActiveRoutes>
 					</li>
 				</>
 			)}

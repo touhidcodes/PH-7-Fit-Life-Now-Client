@@ -12,6 +12,7 @@ import AllOrders from '../pages/Dashboard/AllOrders/AllOrders';
 import PendingOrders from '../pages/Dashboard/PendingOrders/PendingOrders';
 import AddProducts from '../pages/Dashboard/AddProducts/AddProducts';
 import Welcome from '../pages/Dashboard/Welcome/Welcome';
+import MyCart from '../pages/Dashboard/MyCart/MyCart';
 
 const router = createBrowserRouter([
 	{
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
 			{
 				path: 'addProducts',
 				element: <AddProducts />,
+			},
+			{
+				path: 'myCart',
+				element: <MyCart />,
 			},
 		],
 	},

@@ -55,9 +55,9 @@ const MyCart = () => {
 					<thead className='bg-blue-950 rounded-xl text-xl text-white font-semibold'>
 						<tr>
 							<th>#</th>
-							<th>Class Name</th>
-							<th>Instructor</th>
+							<th>Product Name</th>
 							<th>Price</th>
+							<th>Status</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -66,9 +66,9 @@ const MyCart = () => {
 						{cart.map((row, index) => (
 							<tr key={row._id}>
 								<th>{index + 1}</th>
-								<td>{row?.class_name}</td>
-								<td>{row?.instructor_name}</td>
+								<td>{row?.name}</td>
 								<td>$ {row?.price}</td>
+								<td>{row?.status}</td>
 								<td>
 									<button
 										className='btn btn-error'
