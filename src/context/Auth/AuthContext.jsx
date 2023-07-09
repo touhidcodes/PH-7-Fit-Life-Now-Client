@@ -45,6 +45,7 @@ const AuthContext = ({ children }) => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
 			// console.log('auth state changed', currentUser);
 			setUser(currentUser);
+			console.log(currentUser);
 			setLoading(false);
 			// Set JWT to Backend
 			if (currentUser) {
