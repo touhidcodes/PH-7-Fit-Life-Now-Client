@@ -28,9 +28,12 @@ const AllUsers = () => {
 			confirmButtonText: 'Make as Admin!',
 		}).then((result) => {
 			if (result.isConfirmed) {
-				fetch(`http://localhost:5000/users/admin/${user._id}`, {
-					method: 'PATCH',
-				})
+				fetch(
+					`https://ph-7-fit-life-now-server.vercel.app/users/admin/${user._id}`,
+					{
+						method: 'PATCH',
+					}
+				)
 					.then((res) => res.json())
 					.then((data) => {
 						if (data.modifiedCount > 0) {

@@ -28,9 +28,12 @@ const PendingOrders = () => {
 			confirmButtonText: 'Yes, deliver it!',
 		}).then((result) => {
 			if (result.isConfirmed) {
-				fetch(`http://localhost:5000/delivered/${item._id}`, {
-					method: 'PATCH',
-				})
+				fetch(
+					`https://ph-7-fit-life-now-server.vercel.app/delivered/${item._id}`,
+					{
+						method: 'PATCH',
+					}
+				)
 					.then((res) => res.json())
 					.then((data) => {
 						if (data.modifiedCount > 0) {
