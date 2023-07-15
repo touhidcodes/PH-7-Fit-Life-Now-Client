@@ -29,7 +29,7 @@ const PendingOrders = () => {
 		}).then((result) => {
 			if (result.isConfirmed) {
 				fetch(
-					`https://ph-7-fit-life-now-server.vercel.app/delivered/${item._id}`,
+					`https://ph-7-fit-life-now-server-touhidcodes.vercel.app/delivered/${item._id}`,
 					{
 						method: 'PATCH',
 					}

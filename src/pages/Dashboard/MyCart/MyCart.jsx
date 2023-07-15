@@ -18,9 +18,12 @@ const MyCart = () => {
 			confirmButtonText: 'Yes, delete it!',
 		}).then((result) => {
 			if (result.isConfirmed) {
-				fetch(`https://ph-7-fit-life-now-server.vercel.app/carts/${item._id}`, {
-					method: 'DELETE',
-				})
+				fetch(
+					`https://ph-7-fit-life-now-server-touhidcodes.vercel.app/carts/${item._id}`,
+					{
+						method: 'DELETE',
+					}
+				)
 					.then((res) => res.json())
 					.then((data) => {
 						if (data.deletedCount > 0) {

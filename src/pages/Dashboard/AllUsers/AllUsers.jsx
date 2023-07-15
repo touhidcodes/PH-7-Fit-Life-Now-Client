@@ -29,7 +29,7 @@ const AllUsers = () => {
 		}).then((result) => {
 			if (result.isConfirmed) {
 				fetch(
-					`https://ph-7-fit-life-now-server.vercel.app/users/admin/${user._id}`,
+					`https://ph-7-fit-life-now-server-touhidcodes.vercel.app/users/admin/${user._id}`,
 					{
 						method: 'PATCH',
 					}
