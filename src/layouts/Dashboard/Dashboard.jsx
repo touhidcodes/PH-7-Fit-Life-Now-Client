@@ -49,6 +49,9 @@ const Dashboard = () => {
 					<li>
 						<ActiveRoutes to='/dashboard/payment'>Payment</ActiveRoutes>
 					</li>
+					<li>
+						<ActiveRoutes to='/dashboard/history'>Payment History</ActiveRoutes>
+					</li>
 				</>
 			)}
 		</div>

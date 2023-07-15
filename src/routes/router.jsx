@@ -14,6 +14,7 @@ import AddProducts from '../pages/Dashboard/AddProducts/AddProducts';
 import Welcome from '../pages/Dashboard/Welcome/Welcome';
 import MyCart from '../pages/Dashboard/MyCart/MyCart';
 import Payment from '../pages/Dashboard/Payment/Payment';
+import PaymentHistory from '../pages/Dashboard/PaymentHistory/PaymentHistory';
 
 const router = createBrowserRouter([
 	{
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
 			{
 				path: 'payment',
 				element: <Payment />,
+			},
+			{
+				path: 'history',
+				element: <PaymentHistory />,
 			},
 		],
 	},
