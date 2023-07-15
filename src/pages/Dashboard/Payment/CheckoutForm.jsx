@@ -21,6 +21,7 @@ const CheckoutForm = ({ cart, price }) => {
 				setClientSecret(res.data.clientSecret);
 			});
 		}
+		// console.log(clientSecret);
 	}, [price, axiosSecure]);
 
 	const handleSubmit = async (event) => {
@@ -81,6 +82,7 @@ const CheckoutForm = ({ cart, price }) => {
 				status: 'service pending',
 				itemNames: cart.map((item) => item.name),
 			};
+
 			axiosSecure.post('/payments', payment).then((res) => {
 				console.log(res.data);
 				if (res.data.result.insertedId) {
