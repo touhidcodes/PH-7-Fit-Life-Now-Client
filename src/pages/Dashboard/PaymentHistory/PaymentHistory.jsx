@@ -14,7 +14,7 @@ const PaymentHistory = () => {
 	console.log(history);
 	return (
 		<div>
-			<h2 className='text-3xl'>Payment History</h2>
+			<h2 className='text-3xl font-semibold mb-5'>Payment History</h2>
 			<div className='overflow-x-auto'>
 				<table className='table'>
 					{/* head */}
@@ -24,10 +24,10 @@ const PaymentHistory = () => {
 							<th>Email</th>
 							<th>Price</th>
 							<th>Id</th>
-							<th>#</th>
+							<th>Status</th>
 						</tr>
 					</thead>
-					<tbody className='text-xl font-semibold'>
+					<tbody className='text-sm'>
 						{/* row 1 */}
 						{history.map((row) => (
 							<tr key={row._id}>
